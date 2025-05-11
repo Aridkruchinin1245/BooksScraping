@@ -1,7 +1,7 @@
 import requests
 import lxml
 from bs4 import BeautifulSoup
-
+import time
 def get_price(currency_symbol) -> bool:
     '''
     returns prices, if currency_symbol = True return it with extra symbol
@@ -28,6 +28,7 @@ def get_price(currency_symbol) -> bool:
         print('working')    
     return result
 def get_data():
+    start = time.time()
     result = []
     a = -1
     page=49
@@ -52,7 +53,13 @@ def get_data():
             imgsrc = card_data.find('img')['src']
             img = 'https://books.toscrape.com/'+imgsrc[5:]
             price = float(card_data.find('p', class_='price_color').text[2:])
-            description = card_data.find('p', class_='')
+            if card_data.find('p', class_='') == None:
+                pass
+            else:
+                description = card_data.find('p', class_='').text
             result[a].extend([name,img,price,description])
+            print(f'working {page}')
+    end = time.time() - start
+    print(end)
     return result
-get_data()
+
