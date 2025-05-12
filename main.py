@@ -2,6 +2,7 @@ import requests
 import lxml
 from bs4 import BeautifulSoup
 import time
+# from random import randint
 def get_price(currency_symbol) -> bool:
     '''
     returns prices, if currency_symbol = True return it with extra symbol
@@ -9,6 +10,7 @@ def get_price(currency_symbol) -> bool:
     page=0
     result = []
     while True:
+        
         page+=1
         url=f'https://books.toscrape.com/catalogue/page-{page}.html'
         response = requests.get(url).text
@@ -31,9 +33,10 @@ def get_data():
     start = time.time()
     result = []
     a = -1
-    page=49
+    page=0
     hrefs = []
     while True:
+        # time.sleep(randint(0,5))
         page+=1
         url=f'https://books.toscrape.com/catalogue/page-{page}.html'
         response = requests.get(url).text
