@@ -15,7 +15,7 @@ for cell in data:
     column +=1
     for char in cell:
         row+=1
-        worksheet.write(f'{symbols_to_letters[row]}{column}', char)
+        worksheet.write(f'{symbols_to_letters[row]}{column}', char) #make xl symbols
     row = 0
 
 workbook.close()

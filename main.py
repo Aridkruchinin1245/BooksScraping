@@ -33,10 +33,10 @@ def get_data():
     start = time.time()
     result = []
     a = -1
-    page=0
-    hrefs = []
+    page=0 #which page will be first
+    
     while True:
-        # time.sleep(randint(0,5))
+        hrefs = []
         page+=1
         url=f'https://books.toscrape.com/catalogue/page-{page}.html'
         response = requests.get(url).text
